@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    font-family: Outfit;
+}
+
+.slider {
+    -webkit-appearance: none; /* For Chrome/Safari */
+    appearance: none; /* For other browsers */
+    width: 100%; /* Full width to maintain functionality */
+    height: 30px; /* Adjust height as needed */
+    opacity: 0; /* Make the slider invisible */
+    cursor: pointer; /* Show pointer on hover */
+    position: absolute; /* Position it to overlap with the area you want */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10; /* Ensure it is on top of other elements */
+}
+
+/* Slider Thumb for Webkit (Chrome/Safari) */
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* For Chrome/Safari */
+    appearance: none; /* For other browsers */
+    width: 30px; /* Width of the thumb */
+    height: 30px; /* Height of the thumb */
+    background-image: url('https://img.icons8.com/?size=100&id=av411oDv5Q5b&format=png&color=000000'); /* Your icon URL */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain; /* Ensure the icon fits the thumb */
+    cursor: pointer; /* Changes cursor on hover */
+}
+
+/* Slider Thumb for Firefox */
+.slider::-moz-range-thumb {
+    width: 30px; /* Width for Firefox */
+    height: 30px; /* Height for Firefox */
+    background-image: url('https://img.icons8.com/?size=100&id=av411oDv5Q5b&format=png&color=000000'); /* Your icon URL */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain; /* Ensure the icon fits the thumb */
+    cursor: pointer; /* Changes cursor on hover */
+}
+
+/* Slider Thumb for Internet Explorer */
+.slider::-ms-thumb {
+    width: 30px; /* Width for Internet Explorer */
+    height: 30px; /* Height for Internet Explorer */
+    background-image: url('https://img.icons8.com/?size=100&id=av411oDv5Q5b&format=png&color=000000'); /* Your icon URL */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain; /* Ensure the icon fits the thumb */
+    cursor: pointer; /* Changes cursor on hover */
+}
+
+
+
+.bg-layer{
+    background-image: url(/bg_layer.png);
+}
