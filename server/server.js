@@ -3,26 +3,29 @@ import express from 'express';
 import cors from 'cors';
 import connectDB from './configs/mongodb.js';
 
-// Create an async handler for serverless functions
-async function createServer(req, res) {
-  // Initialize the database connection
-  await connectDB();
+// App config
+const app = express();
+const PORT = process.env.PORT || 4000;
 
-  // Initialize the app
-  const app = express();
-  
-  // Middleware setup
-  app.use(express.json());
-  app.use(cors());
+// Connect to MongoDB
+connectDB().catch(err => {
+  console.error('Database connection error:', err);
+  process.exit(1); // Exit the process if there is a database connection error
+});
 
-  // Define API Route
-  app.get('/', (req, res) => {
-    res.send("API is working");
+// Initialize middleware
+app.use(express.json());
+app.use(cors());
+
+// API Route
+app.get('/', (req, res) => res.send("API is working"));
+
+// Export the app for Vercel
+export default app;
+
+// For local testing only, to run the server outside of Vercel
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
   });
-
-  // Call the app with the incoming request and response
-  app(req, res);
 }
-
-// Export the handler for Vercel
-export default createServer;
