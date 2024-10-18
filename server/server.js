@@ -1,7 +1,11 @@
-import 'dotenv/config';
+import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
 import connectDB from './configs/mongodb.js';
+import userRouter from './Routes/userRoute.js';
+
+// Load environment variables
+dotenv.config();
 
 // App config
 const app = express();
@@ -15,10 +19,19 @@ connectDB().catch(err => {
 
 // Initialize middleware
 app.use(express.json());
+
+// CORS configuration (optional: configure for specific origins)
 app.use(cors());
 
 // API Route
 app.get('/', (req, res) => res.send("API is working"));
+app.use('/api/user', userRouter);
+
+// Global error handler
+app.use((err, req, res, next) => {
+  console.error('Unhandled error:', err);
+  res.status(500).json({ success: false, message: 'Internal Server Error' });
+});
 
 // Export the app for Vercel
 export default app;

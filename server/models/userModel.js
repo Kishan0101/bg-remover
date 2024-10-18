@@ -1,15 +1,13 @@
-import mongoose from "mongoose";
-import { type } from "os";
+import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema({
-    clerkID: {type:string, required:true, unique:true},
-    email: {type:string, required:true, unique:true},
-    photo: {type:string, required:true},
-    firstName: {type:string},
-    lastName: {type:string},
-    creditBalance: {type: Number, default:5}
-})
+    clerkID: { type: String, required: true, unique: true },  // Change 'string' to 'String'
+    email: { type: String, required: true, unique: true },
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    photo: { type: String, required: false }
+});
 
-const userModel = mongoose.models.user || mongoose.model("user", userSchema)
+const userModel = mongoose.model('User', userSchema);
 
 export default userModel;
