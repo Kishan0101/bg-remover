@@ -10,7 +10,7 @@ app.use(cors()); // Use cors
 
 // Simple route to test the API
 app.get('/api/hello', (req, res) => {
-  res.send({ message: 'Hello from Vercel!' });
+  res.send("API is Working")
 });
 
 // Default route for other requests
