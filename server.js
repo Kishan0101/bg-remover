@@ -15,7 +15,7 @@ app.get('/api/hello', (req, res) => {
 
 // Default route for other requests
 app.get('*', (req, res) => {
-  res.status(404).json({ error: 'Route not found' });
+  res.send(404).json({ error: 'Route not found' });
 });
 
 // Start the server
