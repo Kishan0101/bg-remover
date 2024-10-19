@@ -1,7 +1,12 @@
 // server.js
+import 'dotenv/config'; // Import dotenv for environment variables
+import express from 'express'; // Import express
+import cors from 'cors'; // Import cors
 
-const express = require('express');
-const app = express();
+const app = express(); // Initialize express app
+
+// Middleware
+app.use(cors()); // Use cors
 
 // Simple route to test the API
 app.get('/api/hello', (req, res) => {
@@ -19,4 +24,4 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
-module.exports = app;
+export default app; // Use export default for ES modules
